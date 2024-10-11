@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+    label {
+        width: 10.5rem !important;
+    }
+</style>
+
+<body>
+    
+
+    <div id="showContent">
+        <div style="margin-top:40px;"></div>
+        <img src="" alt=Google></img>
+        <h1>WELCOME TO GOOGLE </h1>
+
+        <p id="about">Google LLC is an American multinational corporation and technology company focusing on online
+            advertising,
+            search engine technology, cloud computing, computer software, quantum computing, e-commerce,
+            consumer electronics, and artificial intelligence.<a href="https://about.google/intl/ALL_in/"> Read more</a>
+        </p>
+
+        <h4>For booking interview slot, fill the following details </h4>
+
+        <form id="form" style="display:flex; flex-direction: column; align-items: center; justify-content: center;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="jobRole">Job Role:</label>
+            <input type="text" id="jobRole" name="jobRole" required><br><br>
+
+            <button type="submit" onclick=Submit()>Submit</button>
+        </form>
+
+    </div>
+    <div id="thankyou" style="display: none;">
+        <h1 style="text-align: center;">Thank you for submission!</h1>
+        <h2>
+            Name:<span id="displayName"></span>
+        </h2>
+        <h2>
+            Email:<span id="displayEmail"></span>
+        </h2>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            let params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        const linkClicked = getUrlParameter('link');
+        const updateAbout = document.getElementById("about");
+        if (linkClicked === "1") {
+            updateAbout.innerHTML = "Google LLC is an American multinational corporation and technology company focusing on online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, consumer electronics, and artificial intelligence. <a href='https://about.google/intl/ALL_in/'> Read more</a> "
+        }
+        else if (linkClicked === "2") {
+            updateAbout.innerHTML = "Amazon......"
+        }
+        else {
+            console.log("not working>>>>")
+        }
+    </script>
+    <script>
+        function Submit() {
+            event.preventDefault();
+            document.getElementById("showContent").style.display = "none";
+            document.getElementById("thankyou").style.display = "block";
+            let name = document.getElementById('name').value;
+            let mail = document.getElementById('email').value;
+            document.getElementById("displayName").textContent = name;
+            document.getElementById("displayEmail").textContent = mail;
+        }
+    </script>
+</body>
+
+</html>
